@@ -6,11 +6,7 @@ import * as api from "api-dynamic-typescript-parser"
 import * as ua from "api-untyped-ast"
 import * as path from "path"
 
-export function parse(
-    $: {
-        tsconfigPath: api.Path
-    }
-): api.Project<tsmorph.Node> {
+export const parse: api.Parse<tsmorph.Node> = ($) => {
     const joinedPath = path.join(...pl.flatten($.tsconfigPath))
     const project = new tsmorph.Project({})
     project.addSourceFilesFromTsConfig(joinedPath)
