@@ -1,3 +1,4 @@
+import * as pi from "pareto-core-internals"
 import * as pl from "pareto-core-lib"
 import * as pm from "pareto-core-state"
 
@@ -7,7 +8,7 @@ import * as ua from "api-untyped-ast"
 import * as path from "path"
 
 export const parse: api.Parse<tsmorph.Node> = ($) => {
-    const joinedPath = path.join(...pl.flatten($.tsconfigPath))
+    const joinedPath = path.join(...pi.flatten($.tsconfigPath))
     const project = new tsmorph.Project({})
     project.addSourceFilesFromTsConfig(joinedPath)
     const filesBuilder = pm.createDictionaryBuilder<api.File<tsmorph.Node>>(
