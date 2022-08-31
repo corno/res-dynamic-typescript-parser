@@ -1,7 +1,7 @@
 import * as api from "api-dynamic-typescript-parser"
 
-import * as tsmorph from "ts-morph"
+import { Details } from "./Details"
 
-export const getLocation: api.GetLocation<api.Location> = ($) => {
-    return $
+export const getLocation: api.GetLocation<Details> = ($) => {
+    return $.location
 }
