@@ -15,14 +15,8 @@ export const parse: api.Parse<Details> = ($, $i) => {
             const joinedPath = path.join(...pi.flatten($.tsconfigPath))
             const project = new tsmorph.Project({})
             project.addSourceFilesFromTsConfig(joinedPath)
-            const filesBuilder = pm.createDictionaryBuilder<api.File<Details>>(
-                ["ignore", {}],
-                () => {
-                    pl.panic("typescript files don't have unique names")
-                }
-            )
 
-            project.getSourceFiles().map(($) => {
+            project.getSourceFiles().forEach(($) => {
 
                 const fullFilePath = $.getFilePath()
                 const relativeFilePath = path.relative(path.dirname(joinedPath), $.getFilePath())
@@ -48,15 +42,15 @@ export const parse: api.Parse<Details> = ($, $i) => {
                         children: children.getArray(),
                     }
                 }
-                filesBuilder.add(relativeFilePath, {
-                    root: wrap($),
-                    fullPath: fullFilePath
+                $i.onFile({
+                    path: relativeFilePath,
+                    data: {
+                        root: wrap($),
+                        fullPath: fullFilePath
+                    }
                 })
-
             })
-            $i.callback({
-                files: filesBuilder.getDictionary()
-            })
+            $i.onEnd()
             cb()
         }
     }
