@@ -14,7 +14,17 @@ export const parse: api.Parse<Details> = ($, $i) => {
 
             const joinedPath = path.join(...pi.flatten($.tsconfigPath))
             const project = new tsmorph.Project({})
-            project.addSourceFilesFromTsConfig(joinedPath)
+            try {
+                project.addSourceFilesFromTsConfig(joinedPath)
+            } catch(e) {
+                if(!(e instanceof Error)) {
+                    throw new Error("PANIC: catched a non-error")
+                }
+                if (!e.message.startsWith("File not found:")) {
+                    throw new Error(`PANIC: unknown error: ${e.message}`)
+                }
+                $i.onError(["tsconfg.json does not exist", {}])
+            }
 
             project.getSourceFiles().forEach(($) => {
 
