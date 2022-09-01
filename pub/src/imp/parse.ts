@@ -8,7 +8,7 @@ import * as ua from "api-untyped-ast"
 import * as path from "path"
 import { Details } from "./Details"
 
-export const parse: api.Parse<Details> = ($, $i) => {
+export const parse: api.Parse = ($, $i) => {
     return {
         execute: (cb) => {
 
@@ -16,8 +16,8 @@ export const parse: api.Parse<Details> = ($, $i) => {
             const project = new tsmorph.Project({})
             try {
                 project.addSourceFilesFromTsConfig(joinedPath)
-            } catch(e) {
-                if(!(e instanceof Error)) {
+            } catch (e) {
+                if (!(e instanceof Error)) {
                     throw new Error("PANIC: catched a non-error")
                 }
                 if (!e.message.startsWith("File not found:")) {
@@ -32,22 +32,21 @@ export const parse: api.Parse<Details> = ($, $i) => {
                 const relativeFilePath = path.relative(path.dirname(joinedPath), $.getFilePath())
                 function wrap(
                     $: tsmorph.Node
-                ): ua.TUntypedNode<Details> {
-                    const children = pm.createArrayBuilder<ua.TUntypedNode<Details>>()
+                ): ua.TUntypedNode {
+                    const children = pm.createArrayBuilder<ua.TUntypedNode>()
                     $.forEachChild(($) => {
                         children.push(wrap($))
                     })
                     return {
                         kindName: $.getKindName(),
                         value: $.getText(),
-                        implementationDetails: {
-                            get location() {
-                                const x = $.getSourceFile().getLineAndColumnAtPos($.getStart())
-                                return {
-                                    line: x.line,
-                                    column: x.column
-                                }
-                            },
+                        //getting the location is slow. Only do it when it is really requested
+                        get location() {
+                            const x = $.getSourceFile().getLineAndColumnAtPos($.getStart())
+                            return {
+                                line: x.line,
+                                column: x.column
+                            }
                         },
                         children: children.getArray(),
                     }
