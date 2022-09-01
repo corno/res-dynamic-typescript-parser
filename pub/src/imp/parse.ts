@@ -1,12 +1,10 @@
 import * as pi from "pareto-core-internals"
-import * as pl from "pareto-core-lib"
 import * as pm from "pareto-core-state"
 
 import * as tsmorph from "ts-morph"
 import * as api from "api-dynamic-typescript-parser"
 import * as ua from "api-untyped-ast"
 import * as path from "path"
-import { Details } from "./Details"
 
 export const parse: api.Parse = ($, $i) => {
     return {
@@ -41,11 +39,13 @@ export const parse: api.Parse = ($, $i) => {
                         kindName: $.getKindName(),
                         value: $.getText(),
                         //getting the location is slow. Only do it when it is really requested
-                        get location() {
-                            const x = $.getSourceFile().getLineAndColumnAtPos($.getStart())
-                            return {
-                                line: x.line,
-                                column: x.column
+                        details: {
+                            get location() {
+                                const x = $.getSourceFile().getLineAndColumnAtPos($.getStart())
+                                return {
+                                    line: x.line,
+                                    column: x.column
+                                }
                             }
                         },
                         children: children.getArray(),
