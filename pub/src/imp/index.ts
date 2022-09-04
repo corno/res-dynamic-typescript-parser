@@ -1,4 +1,4 @@
 
 export * from "./parse"
 
-export * from "./stripQuotesFromValue"
+export * from "./stripQuotes"
