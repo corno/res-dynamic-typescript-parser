@@ -7,10 +7,10 @@
   "author": "Corno",
   "license": "ISC",
   "dependencies": {
-    "api-dynamic-typescript-parser": "^0.6.2",
+    "api-dynamic-typescript-parser": "^0.8.0",
     "pareto-core-lib": "^0.8.0",
     "pareto-core-state": "^0.6.0",
-    "ts-morph": "^15.1.0"
+    "ts-morph": "^16.0.0"
   },
   "files": [
     "dist",
@@ -19,5 +19,5 @@
   "devDependencies": {
     "@types/node": "^18.7.14"
   },
-  "content-fingerprint": "3a9e1601da410c4e11b8fdc809b4574cb8bbf860"
+  "content-fingerprint": "1ea4f2149825a64ea059633180024bc8ae5b6165"
 }

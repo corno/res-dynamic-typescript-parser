@@ -6,7 +6,7 @@ import * as api from "api-dynamic-typescript-parser"
 import * as ua from "api-untyped-ast"
 import * as path from "path"
 
-export const parse: api.Parse = ($, $i) => {
+export const parse: api.XParse = ($, $i) => {
     return {
         execute: (cb) => {
 
@@ -25,7 +25,7 @@ export const parse: api.Parse = ($, $i) => {
             }
 
             project.getSourceFiles().forEach(($) => {
-
+                
                 const fullFilePath = $.getFilePath()
                 const relativeFilePath = path.relative(path.dirname(joinedPath), $.getFilePath())
                 function wrap(
