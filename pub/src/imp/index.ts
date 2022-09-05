@@ -1,4 +1,4 @@
 
-export * from "./parse"
+export * from "./public/parse"
 
-export * from "./stripQuotes"
+export * from "./public/stripQuotes"

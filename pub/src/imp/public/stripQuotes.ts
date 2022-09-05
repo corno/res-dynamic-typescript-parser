@@ -5,5 +5,5 @@ export const stripQuotes: api.FStripQuotes = ($) => {
     if (firstCharacter !== "\"" && firstCharacter != "'") {
         throw new Error("unexpected wrapper")
     }
-    return $.substring(1, $.length - 2)
+    return $.substring(1, $.length - 1)
 }
