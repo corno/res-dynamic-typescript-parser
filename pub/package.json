@@ -1,6 +1,6 @@
 {
   "name": "res-dynamic-typescript-parser",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "description": "parses a typescript project into a dynamic AST",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
