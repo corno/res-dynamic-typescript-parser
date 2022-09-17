@@ -6,7 +6,7 @@ import * as api from "api-dynamic-typescript-parser"
 import * as ua from "api-untyped-ast"
 import * as path from "path"
 
-export const parseImp: api.XParse = ($, $i) => {
+export const f_parseImp: api.XParse = ($, $i) => {
     return {
         execute: (cb) => {
 
@@ -21,11 +21,19 @@ export const parseImp: api.XParse = ($, $i) => {
                 if (!e.message.startsWith("File not found:")) {
                     throw new Error(`PANIC: unknown error: ${e.message}`)
                 }
-                $i.onError(["tsconfg.json does not exist", {}])
+                $i.onError(["tsconfg.json does not exist", null])
             }
 
+            project.resolveSourceFileDependencies()
+
             project.getSourceFiles().forEach(($) => {
-                
+
+            //     const x = $.asKind(tsmorph.ts.SyntaxKind.PrefixUnaryExpression)
+
+            //    const z = x?.getOperatorToken()
+               z.
+                const y = x?.getOperand()
+
                 const fullFilePath = $.getFilePath()
                 const relativeFilePath = path.relative(path.dirname(joinedPath), $.getFilePath())
                 function wrap(
