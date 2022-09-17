@@ -1,5 +1,5 @@
 import * as api from "api-dynamic-typescript-parser"
-import { stripQuotesImp } from "../private/f_stripQuotesImp"
+import { stripQuotesImp } from "../private/stripQuotesImp.p"
 
 export const f_stripQuotes: api.FStripQuotes = ($) => {
     return stripQuotesImp($)
