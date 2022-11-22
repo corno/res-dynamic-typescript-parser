@@ -8,8 +8,8 @@
   "license": "ISC",
   "dependencies": {
     "api-dynamic-typescript-parser": "^0.12.0",
-    "pareto-core-lib": "^0.13.0",
-    "pareto-core-state": "^0.10.0",
+    "pareto-core": "^0.0.4",
+    "pareto-core-internals": "^0.9.0",
     "ts-morph": "^16.0.0"
   },
   "files": [
@@ -19,5 +19,5 @@
   "devDependencies": {
     "@types/node": "^18.7.18"
   },
-  "content-fingerprint": "2af0e37683a6381476174b1e3d42249aacd67579"
+  "content-fingerprint": "c143a46ece5a15050590195c74d58d69faa86fc6"
 }
