@@ -4,7 +4,7 @@
   "description": "a pareto wrapper around basic string operations as Pareto lacks them (yes, really, by design, the idea is to find a way how not to need them, and if you really do, then use this library)",
 
   "dependencies": {
-    "glo-pareto-common": "^0.10.0",
+    "glo-pareto-common": "^0.11.0",
     "glo-typescript-untyped-ast": "^0.0.1",
     "ts-morph": "^17.0.1",
     "pareto-core-internals": "^0.11.0"
