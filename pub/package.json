@@ -2,12 +2,11 @@
   "author": "Corno",
   "license": "ISC",
   "description": "a pareto wrapper around basic string operations as Pareto lacks them (yes, really, by design, the idea is to find a way how not to need them, and if you really do, then use this library)",
-
   "dependencies": {
     "glo-pareto-common": "^0.12.0",
     "glo-typescript-untyped-ast": "^0.1.0",
-    "ts-morph": "^17.0.1",
-    "pareto-core-internals": "^0.11.1"
+    "pareto-core-internals": "^0.11.1",
+    "ts-morph": "^17.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.13.0"
@@ -16,8 +15,12 @@
     "dist"
   ],
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "http://github.com/corno/res-dynamic-typescript-parser.git"
   },
   "main": "dist/index.js",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "name": "res-dynamic-typescript-parser",
+  "version": "0.21.0",
+  "content-fingerprint": "094d7123ef978cbefb4bdea153855b429967c563"
 }
