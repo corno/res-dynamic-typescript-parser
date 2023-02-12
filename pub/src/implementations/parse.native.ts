@@ -41,8 +41,8 @@ export const $$: api.Cparse = ($, $i) => {
       const relativeFilePath = mpath.relative(mpath.dirname(joinedPath), $.getFilePath())
       function wrap(
          $: mtsmorph.Node
-      ): mua.TUntypedNode {
-         const children: mua.TUntypedNode[] = []
+      ): mua.T.UntypedNode {
+         const children: mua.T.UntypedNode[] = []
          $.forEachChild(($) => {
             children.push(wrap($))
          })

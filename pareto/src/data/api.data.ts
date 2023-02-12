@@ -8,7 +8,7 @@ import {
     interfaceReference,
     null_,
     method,
-    number, dictionary, group, member, taggedUnion, types, parameter, template, func, data, reference,
+    number, dictionary, group, member, taggedUnion, types, func, data, reference, type,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
@@ -17,16 +17,14 @@ import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodule
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': {
         'imports': d({
             "common": "glo-pareto-common",
             "uast": "glo-typescript-untyped-ast",
         }),
         'parameters': d({}),
-        'templates': d({
-        }),
-        'types': types({
+        'types': d({
 
             // import * as pt from "pareto-core-types";
             // import * as uast from "api-untyped-ast";
@@ -38,22 +36,22 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             //     readonly "line": number;
             //     readonly "column": number;
             // };
-            
-            "File": group({
+
+            "File": type(group({
                 "fullPath": member(string()),
                 "root": member(reference("uast", "UntypedNode")),
-            }),
-            "FileData": group({
+            })),
+            "FileData": type(group({
                 "path": member(string()),
-                "data":member(reference("File")),
-            }),
-            "ParseData": group({
+                "data": member(reference("File")),
+            })),
+            "ParseData": type(group({
                 "tsconfigPath": member(reference("common", "Path")),
-            }),
-            "TypescriptParseError": taggedUnion({
+            })),
+            "TypescriptParseError": type(taggedUnion({
                 "tsconfig.json does not exist": group({}),
                 "is directory": group({}),
-            }),
+            })),
         }),
         'interfaces': d({
             "ParserHandler": ['group', {

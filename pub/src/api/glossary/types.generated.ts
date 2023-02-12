@@ -3,35 +3,53 @@ import * as pt from 'pareto-core-types'
 import * as mcommon from "glo-pareto-common"
 import * as muast from "glo-typescript-untyped-ast"
 
-export namespace GFile {}
-export type GFile = {
-    readonly 'fullPath': string
-    readonly 'root': muast.TUntypedNode
-}
-export type UFile = GFile
-
-export namespace GFileData {}
-export type GFileData = {
-    readonly 'data': UFile
-    readonly 'path': string
-}
-export type UFileData = GFileData
-
-export namespace GParseData {}
-export type GParseData = {
-    readonly 'tsconfigPath': mcommon.TPath
-}
-export type UParseData = GParseData
-
-export namespace GTypescriptParseError {
+export namespace T {
     
-    export namespace Ois__directory {}
-    export type Ois__directory = {}
+    export namespace File {
+        
+        export type fullPath = string
+        
+        export type root = muast.T.UntypedNode
+    }
     
-    export namespace Otsconfig_pejson__does__not__exist {}
-    export type Otsconfig_pejson__does__not__exist = {}
+    export type File = {
+        readonly 'fullPath': string
+        readonly 'root': muast.T.UntypedNode
+    }
+    
+    export namespace FileData {
+        
+        export type data = T.File
+        
+        export type path = string
+    }
+    
+    export type FileData = {
+        readonly 'data': T.File
+        readonly 'path': string
+    }
+    
+    export namespace ParseData {
+        
+        export type tsconfigPath = mcommon.T.Path
+    }
+    
+    export type ParseData = {
+        readonly 'tsconfigPath': mcommon.T.Path
+    }
+    
+    export namespace TypescriptParseError {
+        
+        export namespace is__directory {}
+        
+        export type is__directory = {}
+        
+        export namespace tsconfig_pejson__does__not__exist {}
+        
+        export type tsconfig_pejson__does__not__exist = {}
+    }
+    
+    export type TypescriptParseError = 
+        | ['is directory', {}]
+        | ['tsconfig.json does not exist', {}]
 }
-export type GTypescriptParseError = 
-    | ['is directory', GTypescriptParseError.Ois__directory]
-    | ['tsconfig.json does not exist', GTypescriptParseError.Otsconfig_pejson__does__not__exist]
-export type UTypescriptParseError = GTypescriptParseError
