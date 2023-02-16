@@ -11,19 +11,27 @@ export const $: mproject.T.Project = {
     'description': "a pareto wrapper around basic string operations as Pareto lacks them (yes, really, by design, the idea is to find a way how not to need them, and if you really do, then use this library)",
     'license': "ISC",
     
-    'pubdependencies': d({
+    'dependencies': d({
         "glo-pareto-common": {},
         "glo-typescript-untyped-ast": {},
         "ts-morph": {},
     }),
     'type': ['resource', {
         'definition': api,
+        'nativeDependencies': d({}),
         'devDependencies': d({
             "@types/node": {},
         }),
         'test': {
             'dependencies': d({
             }),
+            'glossary': {
+                'functions': d({}),
+                'imports': d({}),
+                'parameters': d({}),
+                'types': d({}),
+                'interfaces': d({}),
+            },
         }
     }],
 }
