@@ -1,12 +1,14 @@
 
 import * as pm from "pareto-core-state"
 import * as pl from "pareto-core-lib"
+import * as pv from "pareto-core-dev"
 
 import * as api from "../api"
 
 import * as pub from "../../../../../pub"
 
 import * as mtest from "lib-pareto-test"
+import * as muast from "glo-typescript-untyped-ast"
 
 export const $$: api.CgetTestSet = ($) => {
 
@@ -17,28 +19,34 @@ export const $$: api.CgetTestSet = ($) => {
         },
         {
             'onEnd': () => {
-                pl.logDebugMessage(`END`)
+                pv.logDebugMessage(`END`)
             },
             'onError': ($) => {
                 switch ($[0]) {
                     case 'tsconfig.json does not exist':
                         pl.cc($[1], ($) => {
-                            pl.logDebugMessage(`tsconfig.json does not exist`)
+                            pv.logDebugMessage(`tsconfig.json does not exist`)
                         })
                         break
-                        case 'is directory':
-                            pl.cc($[1], ($) => {
-                                pl.logDebugMessage(`specified path refers to a directory, not a file`)
+                    case 'is directory':
+                        pl.cc($[1], ($) => {
+                            pv.logDebugMessage(`specified path refers to a directory, not a file`)
 
-                            })
-                            break
+                        })
+                        break
                     default: pl.au($[0])
                 }
             },
             'onFile': ($) => {
-                pl.logDebugMessage($.path)
-                pl.logDebugMessage($.data.fullPath)
-                $.data.root
+                pv.logDebugMessage($.path)
+                pv.logDebugMessage($.data.fullPath)
+                function doNode($: muast.T.UntypedNode) {
+                    $.children.forEach(($) => {
+                        //pv.logDebugMessage("-")
+                        doNode($)
+                    })
+                }
+                doNode($.data.root)
             }
         }
     )
