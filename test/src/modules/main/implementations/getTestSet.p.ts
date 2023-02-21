@@ -41,7 +41,7 @@ export const $$: api.CgetTestSet = ($) => {
                 pv.logDebugMessage($.path)
                 pv.logDebugMessage($.data.fullPath)
                 function doNode($: muast.T.UntypedNode) {
-                    $.children.forEach(($) => {
+                    $.children.__forEach(($) => {
                         //pv.logDebugMessage("-")
                         doNode($)
                     })
