@@ -1,14 +1,15 @@
 import * as pi from 'pareto-core-internals'
 
-import * as api from "../api"
+import * as gua from "glo-typescript-untyped-ast"
 
-import * as mtsmorph from "ts-morph"
-import * as mua from "glo-typescript-untyped-ast"
-import * as mpath from "path"
+import * as ntsmorph from "ts-morph"
+import * as npath from "path"
 
-export const $$: api.Cparse = ($, $i) => {
-   const joinedPath = mpath.join(...pi.flatten($.tsconfigPath))
-   const project = new mtsmorph.Project({})
+import { Cparse } from "../api"
+
+export const $$:Cparse = ($, $i) => {
+   const joinedPath = npath.join(...pi.flatten($.tsconfigPath))
+   const project = new ntsmorph.Project({})
    try {
       project.addSourceFilesFromTsConfig(joinedPath)
    } catch (e) {
@@ -38,11 +39,11 @@ export const $$: api.Cparse = ($, $i) => {
       //     const y = x?.getOperand()
 
       const fullFilePath = $.getFilePath()
-      const relativeFilePath = mpath.relative(mpath.dirname(joinedPath), $.getFilePath())
+      const relativeFilePath = npath.relative(npath.dirname(joinedPath), $.getFilePath())
       function wrap(
-         $: mtsmorph.Node
-      ): mua.T.UntypedNode {
-         const children: mua.T.UntypedNode[] = []
+         $: ntsmorph.Node
+      ): gua.T.UntypedNode {
+         const children: gua.T.UntypedNode[] = []
          $.forEachChild(($) => {
             children.push(wrap($))
          })

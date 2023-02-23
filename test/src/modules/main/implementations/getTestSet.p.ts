@@ -4,13 +4,15 @@ import * as pl from 'pareto-core-lib'
 import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
 
-import * as mapi from "../api"
-import * as mpub from "../../../../../pub"
-import * as mtest from "lib-pareto-test"
-import * as muast from "glo-typescript-untyped-ast"
 
-export const $$: mapi.CgetTestSet = ($) => {
-    mpub.$a.parse(
+import * as gpub from "../../../../../pub"
+import * as gtest from "lib-pareto-test"
+import * as guast from "glo-typescript-untyped-ast"
+
+import { CgetTestSet } from "../api"
+
+export const $$:CgetTestSet = ($) => {
+    gpub.$a.parse(
         {
             'tsconfigPath': [$.testDirectory, "..", "tsconfig.json"]
         },
@@ -37,7 +39,7 @@ export const $$: mapi.CgetTestSet = ($) => {
             'onFile': ($) => {
                 pv.logDebugMessage($.path)
                 pv.logDebugMessage($.data.fullPath)
-                function doNode($: muast.T.UntypedNode) {
+                function doNode($: guast.T.UntypedNode) {
                     $.children.__forEach(($) => {
                         //pv.logDebugMessage("-")
                         doNode($)
@@ -47,7 +49,7 @@ export const $$: mapi.CgetTestSet = ($) => {
             }
         }
     )
-    const builder = ps.createUnsafeDictionaryBuilder<mtest.T.TestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<gtest.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             'type': ['test', {
