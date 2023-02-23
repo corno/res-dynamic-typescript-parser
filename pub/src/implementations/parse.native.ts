@@ -16,7 +16,7 @@ export const $$: api.Cparse = ($, $i) => {
          throw new Error("PANIC: catched a non-error")
       } else {
          if (e.message.startsWith("File not found:")) {
-            $i.onError(["tsconfig.json does not exist", {}])
+            $i.onError(['tsconfig.json does not exist', {}])
          } else {
             if (e.message.startsWith("EISDIR")) {
                $i.onError(['is directory', {}])

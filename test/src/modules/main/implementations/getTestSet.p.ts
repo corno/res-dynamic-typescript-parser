@@ -1,19 +1,16 @@
 
-import * as pm from "pareto-core-state"
-import * as pl from "pareto-core-lib"
-import * as pv from "pareto-core-dev"
+import * as ps from 'pareto-core-state'
+import * as pl from 'pareto-core-lib'
+import * as pv from 'pareto-core-dev'
+import * as pa from 'pareto-core-async'
 
-import * as api from "../api"
-
-import * as pub from "../../../../../pub"
-
+import * as mapi from "../api"
+import * as mpub from "../../../../../pub"
 import * as mtest from "lib-pareto-test"
 import * as muast from "glo-typescript-untyped-ast"
 
-export const $$: api.CgetTestSet = ($) => {
-
-
-    pub.$a.parse(
+export const $$: mapi.CgetTestSet = ($) => {
+    mpub.$a.parse(
         {
             'tsconfigPath': [$.testDirectory, "..", "tsconfig.json"]
         },
@@ -50,11 +47,11 @@ export const $$: api.CgetTestSet = ($) => {
             }
         }
     )
-    const builder = pm.createUnsafeDictionaryBuilder<mtest.T.TestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<mtest.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
-            type: ["test", {
-                type: ["short string", {
+            'type': ['test', {
+                type: ['short string', {
                     actual: actual,
                     expected: expected
                 }]
@@ -62,7 +59,7 @@ export const $$: api.CgetTestSet = ($) => {
         })
     }
 
-    return pl.asyncValue({
+    return pa.asyncValue({
         elements: builder.getDictionary()
     })
 }

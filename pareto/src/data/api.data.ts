@@ -26,7 +26,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
         'parameters': d({}),
         'types': d({
 
-            // import * as pt from "pareto-core-types";
+            // import * as pt from 'pareto-core-types';
             // import * as uast from "api-untyped-ast";
             // export declare type TFile = {
             //     readonly "fullPath": string;
