@@ -2,8 +2,8 @@ import * as pt from 'pareto-core-types'
 
 import { T   } from './types.generated'
 
-import * as mcommon from "glo-pareto-common"
-import * as muast from "glo-typescript-untyped-ast"
+import * as gcommon from "glo-pareto-common"
+import * as guast from "glo-typescript-untyped-ast"
 
 export type IParserHandler = {
     'onEnd': () => void
@@ -13,4 +13,4 @@ export type IParserHandler = {
 
 export type FParse = ($: T.ParseData, $i: IParserHandler,) => void
 
-export type FStripQuotes = ($: mcommon.T.String,) => mcommon.T.String
+export type FStripQuotes = ($: gcommon.T.String,) => gcommon.T.String

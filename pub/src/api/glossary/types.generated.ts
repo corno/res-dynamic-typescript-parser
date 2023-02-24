@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 
-import * as mcommon from "glo-pareto-common"
-import * as muast from "glo-typescript-untyped-ast"
+import * as gcommon from "glo-pareto-common"
+import * as guast from "glo-typescript-untyped-ast"
 
 export namespace T {
     
@@ -9,12 +9,12 @@ export namespace T {
         
         export type fullPath = string
         
-        export type root = muast.T.UntypedNode
+        export type root = guast.T.UntypedNode
     }
     
     export type File = {
         readonly 'fullPath': string
-        readonly 'root': muast.T.UntypedNode
+        readonly 'root': guast.T.UntypedNode
     }
     
     export namespace FileData {
@@ -31,11 +31,11 @@ export namespace T {
     
     export namespace ParseData {
         
-        export type tsconfigPath = mcommon.T.Path
+        export type tsconfigPath = gcommon.T.Path
     }
     
     export type ParseData = {
-        readonly 'tsconfigPath': mcommon.T.Path
+        readonly 'tsconfigPath': gcommon.T.Path
     }
     
     export namespace TypescriptParseError {
