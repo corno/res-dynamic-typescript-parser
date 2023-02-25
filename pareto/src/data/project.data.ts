@@ -14,11 +14,12 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'dependencies': d({
         "glo-pareto-common": {},
         "glo-typescript-untyped-ast": {},
-        "ts-morph": {},
     }),
     'type': ['resource', {
         'definition': api,
-        'nativeDependencies': d({}),
+        'nativeDependencies': d({
+            "ts-morph": {},     
+        }),
         'devDependencies': d({
             "@types/node": {},
         }),
