@@ -6,9 +6,8 @@ import * as gcommon from "glo-pareto-common"
 import * as guast from "glo-typescript-untyped-ast"
 
 export type IParserHandler = {
-    'onEnd': () => void
     'onError': ($: T.TypescriptParseError, ) => void
-    'onFile': ($: T.FileData, ) => void
+    'onSuccess': ($: guast.T.UntypedNode<T.TypescriptParserNode>, ) => void
 }
 
 export type FParse = ($: T.ParseData, $i: IParserHandler,) => void

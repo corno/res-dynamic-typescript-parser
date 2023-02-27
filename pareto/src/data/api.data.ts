@@ -8,7 +8,7 @@ import {
     interfaceReference,
     null_,
     method,
-    number, dictionary, group, member, taggedUnion, types, func, data, reference, type,
+    number, dictionary, group, member, taggedUnion, types, func, data, reference, type, parametrizedTypeReference, computed,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
@@ -37,28 +37,27 @@ export const $: gmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
             //     readonly "column": number;
             // };
 
-            "File": type(group({
-                "fullPath": member(string()),
-                "root": member(reference("uast", "UntypedNode")),
-            })),
-            "FileData": type(group({
-                "path": member(string()),
-                "data": member(reference("File")),
-            })),
             "ParseData": type(group({
-                "tsconfigPath": member(reference("common", "Path")),
+                "path": member(reference("common", "Path")),
             })),
             "TypescriptParseError": type(taggedUnion({
-                "tsconfig.json does not exist": group({}),
-                "is directory": group({}),
+                "could not read file": group({}),
+            })),
+            "TypescriptParserNode": type(group({
+                "internal": member(group({
+                    //cast this one to a Typescript.Node if needed
+                })),
+                "location": member(computed(group({
+                    "line": member(number()),
+                    "column": member(number()),
+                })))
             })),
         }),
         'interfaces': d({
             "ParserHandler": ['group', {
                 'members': d({
                     "onError": method(typeReference("TypescriptParseError")),
-                    "onFile": method(typeReference("FileData")),
-                    "onEnd": method(null),
+                    "onSuccess": method(parametrizedTypeReference("uast", { "Annotation": typeReference("TypescriptParserNode")}, "UntypedNode")),
                 }),
             }],
         }),

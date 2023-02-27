@@ -10,41 +10,66 @@ import * as guast from "glo-typescript-untyped-ast"
 
 import { CgetTestSet } from "../api"
 
-export const $$:CgetTestSet = ($) => {
+export const $$: CgetTestSet = ($) => {
     gpub.$a.parse(
         {
-            'tsconfigPath': [$.testDirectory, "..", "tsconfig.json"]
+            'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.p.ts"]
         },
         {
-            'onEnd': () => {
-                pv.logDebugMessage(`END`)
-            },
             'onError': ($) => {
                 switch ($[0]) {
-                    case 'tsconfig.json does not exist':
+                    case 'could not read file':
                         pl.cc($[1], ($) => {
-                            pv.logDebugMessage(`tsconfig.json does not exist`)
-                        })
-                        break
-                    case 'is directory':
-                        pl.cc($[1], ($) => {
-                            pv.logDebugMessage(`specified path refers to a directory, not a file`)
-
+                            pv.logDebugMessage(`could not read file`)
                         })
                         break
                     default: pl.au($[0])
                 }
             },
-            'onFile': ($) => {
-                pv.logDebugMessage($.path)
-                pv.logDebugMessage($.data.fullPath)
-                function doNode($: guast.T.UntypedNode) {
+            'onSuccess': ($) => {
+                // pv.logDebugMessage($.path)
+                // pv.logDebugMessage($.data.fullPath)
+                function doNode($: guast.T.UntypedNode<gpub.T.TypescriptParserNode>) {
                     $.children.__forEach(($) => {
-                        //pv.logDebugMessage("-")
+                        // pv.logDebugMessage($.kind)
+
+                        // const x = !true
+                        // if ($.kind === "PrefixUnaryExpression") {
+                        //     const operator = $.flags().__unsafeGetEntry("operator")()
+                        //     if (operator[0] !== 'number') {
+                        //         pl.panic(`expected a number`)
+                        //     } else {
+                        //         if (operator[1] !== 53) {
+                        //             pl.panic(`expected 53`)
+                        //         } else {
+                        //             pv.logDebugMessage("WOOOHHOOO############################################################")
+                        //         }
+                        //     }
+                        // }
+                        // if ($.kind === "Identifier") {
+                        //     const operator = $.flags().__unsafeGetEntry("escapedText")()
+                        //     if (operator[0] !== 'string') {
+                        //         pl.panic(`expected a string`)
+                        //     } else {
+                        //         pv.logDebugMessage(`WOOOHHOO$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   ${operator[1]}`)
+           
+                        //     }
+                        // }
+                        // if ($.kind === "StringLiteral") {
+                        //     const operator = $.flags().__unsafeGetEntry("text")()
+                        //     if (operator[0] !== 'string') {
+                        //         pl.panic(`expected a string`)
+                        //     } else {
+                        //         pv.logDebugMessage(`WOOOHHOO$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   ${operator[1]}`)
+           
+                        //     }
+                        // }
+
                         doNode($)
+
                     })
                 }
-                doNode($.data.root)
+                doNode($)
             }
         }
     )

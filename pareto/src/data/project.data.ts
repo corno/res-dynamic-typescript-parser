@@ -9,7 +9,7 @@ import { $ as api } from "./api.data"
 export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "a pareto wrapper around basic string operations as Pareto lacks them (yes, really, by design, the idea is to find a way how not to need them, and if you really do, then use this library)",
-    'license': "ISC",
+    'license': "TBD",
     
     'dependencies': d({
         "glo-pareto-common": {},
@@ -18,7 +18,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'type': ['resource', {
         'definition': api,
         'nativeDependencies': d({
-            "ts-morph": {},     
+            "typescript": {},     
         }),
         'devDependencies': d({
             "@types/node": {},

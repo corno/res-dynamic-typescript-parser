@@ -5,51 +5,57 @@ import * as guast from "glo-typescript-untyped-ast"
 
 export namespace T {
     
-    export namespace File {
-        
-        export type fullPath = string
-        
-        export type root = guast.T.UntypedNode
-    }
-    
-    export type File = {
-        readonly 'fullPath': string
-        readonly 'root': guast.T.UntypedNode
-    }
-    
-    export namespace FileData {
-        
-        export type data = T.File
-        
-        export type path = string
-    }
-    
-    export type FileData = {
-        readonly 'data': T.File
-        readonly 'path': string
-    }
-    
     export namespace ParseData {
         
-        export type tsconfigPath = gcommon.T.Path
+        export type path = gcommon.T.Path
     }
     
     export type ParseData = {
-        readonly 'tsconfigPath': gcommon.T.Path
+        readonly 'path': gcommon.T.Path
     }
     
     export namespace TypescriptParseError {
         
-        export namespace is__directory {}
+        export namespace could__not__read__file {}
         
-        export type is__directory = {}
-        
-        export namespace tsconfig_pejson__does__not__exist {}
-        
-        export type tsconfig_pejson__does__not__exist = {}
+        export type could__not__read__file = {}
     }
     
     export type TypescriptParseError = 
-        | ['is directory', {}]
-        | ['tsconfig.json does not exist', {}]
+        | ['could not read file', {}]
+    
+    export namespace TypescriptParserNode {
+        
+        export namespace internal {}
+        
+        export type internal = {}
+        
+        export namespace location {
+            
+            export namespace C {
+                
+                export type column = number
+                
+                export type line = number
+            }
+            
+            export type C = {
+                readonly 'column': number
+                readonly 'line': number
+            }
+        }
+        
+        export type location = () => {
+            readonly 'column': number
+            readonly 'line': number
+        }
+    }
+    
+    export type TypescriptParserNode = {
+        readonly 'internal': {}
+        readonly 'location': () => {
+            readonly 'column': number
+            readonly 'line': number
+        }
+    }
 }
