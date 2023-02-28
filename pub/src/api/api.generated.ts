@@ -1,11 +1,10 @@
 import * as pt from 'pareto-core-types'
 
-import * as gglo from "./glossary"
+import * as gthis from "./glossary"
 
+export type Cparse = gthis.FParse
 
-export type Cparse = gglo.FParse
-
-export type CstripQuotes = gglo.FStripQuotes
+export type CstripQuotes = gthis.FStripQuotes
 
 export type API = {
     parse: Cparse
