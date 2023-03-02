@@ -8,7 +8,7 @@ import * as gpub from "../../../../../pub"
 import * as gtest from "lib-pareto-test"
 import * as guast from "glo-typescript-untyped-ast"
 
-import { CgetTestSet } from "../api"
+import { CgetTestSet } from "../definition/api.generated"
 
 export const $$: CgetTestSet = ($) => {
     gpub.$a.parse(

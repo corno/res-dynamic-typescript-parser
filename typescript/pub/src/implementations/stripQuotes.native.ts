@@ -1,4 +1,4 @@
-import { CstripQuotes } from "../api"
+import { CstripQuotes } from "../definition/api.generated"
 
 export const $$:CstripQuotes = ($) => {
     const firstCharacter = $.substring(0, 1)
