@@ -11,7 +11,7 @@ import * as guast from "glo-typescript-untyped-ast"
 import { CgetTestSet } from "../definition/api.generated"
 
 export const $$: CgetTestSet = ($) => {
-    gpub.$a.parse(
+    gpub.$r.parse(
         {
             'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.p.ts"]
         },

@@ -14,7 +14,7 @@ export const $$: Cparse = ($, $i) => {
    const fileContents = ntypescript.sys.readFile(joinedPath);
 
    if (fileContents === undefined) {
-      $i.onError(['could not read file', {}])
+      $i.onError(['could not read file', null])
    } else {
 
       // Parse the TypeScript file and get its AST
@@ -37,7 +37,7 @@ export const $$: Cparse = ($, $i) => {
             'kind': ntypescript.SyntaxKind[$.kind],
             //getting the location is slow. Only do it when it is really requested
             'annotation': {
-               'internal': $,
+               'internal': null,
                'location': () => {
                   const start = ntypescript.getLineAndCharacterOfPosition(sourceFile, $.getStart());
 

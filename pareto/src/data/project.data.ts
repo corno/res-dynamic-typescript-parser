@@ -13,8 +13,8 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'license': "TBD",
     
     'dependencies': d({
-        "glo-pareto-common": {},
-        "glo-typescript-untyped-ast": {},
+        "glo-pareto-common": null,
+        "glo-typescript-untyped-ast": null,
     }),
     'type': ['resource', {
         'definition': {
@@ -22,14 +22,14 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             'api': api,
         },
         'nativeDependencies': d({
-            "typescript": {},     
+            "typescript": null,     
         }),
         'devDependencies': d({
-            "@types/node": {},
+            "@types/node": null,
         }),
         'test': {
             'dependencies': d({
-                "glo-typescript-untyped-ast": {}
+                "glo-typescript-untyped-ast": null,
             }),
             'glossary': {
                 'functions': d({}),

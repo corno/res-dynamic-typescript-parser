@@ -18,17 +18,17 @@ export namespace T {
         
         export namespace could__not__read__file {}
         
-        export type could__not__read__file = {}
+        export type could__not__read__file = null
     }
     
     export type TypescriptParseError = 
-        | ['could not read file', {}]
+        | ['could not read file', null]
     
     export namespace TypescriptParserNode {
         
         export namespace internal {}
         
-        export type internal = {}
+        export type internal = null
         
         export namespace location {
             
@@ -52,7 +52,7 @@ export namespace T {
     }
     
     export type TypescriptParserNode = {
-        readonly 'internal': {}
+        readonly 'internal': null
         readonly 'location': () => {
             readonly 'column': number
             readonly 'line': number
