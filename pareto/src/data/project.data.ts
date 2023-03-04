@@ -47,10 +47,11 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 "glo-typescript-untyped-ast": null,
             }),
             'glossary': {
-                'functions': d({}),
                 'parameters': d({}),
                 'types': d({}),
+                'builders': d({}),
                 'interfaces': d({}),
+                'functions': d({}),
             },
             'imports': d({}),
         }

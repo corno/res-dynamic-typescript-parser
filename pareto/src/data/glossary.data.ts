@@ -14,10 +14,10 @@ import {
     optional,
     reference,
     number,
-    method,
+    builderMethod,
     parametrizedTypeReference,
     computed,
-    interfaceReference,
+    builderReference,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -54,16 +54,18 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             })))
         })),
     }),
-    'interfaces': d({
+    'builders': d({
         "ParserHandler": ['group', {
             'members': d({
-                "onError": method(typeReference("TypescriptParseError")),
-                "onSuccess": method(parametrizedTypeReference("uast", { "Annotation": typeReference("TypescriptParserNode")}, "UntypedNode")),
+                "onError": builderMethod(typeReference("TypescriptParseError")),
+                "onSuccess": builderMethod(parametrizedTypeReference("uast", { "Annotation": typeReference("TypescriptParserNode")}, "UntypedNode")),
             }),
         }],
     }),
+    'interfaces': d({
+    }),
     'functions': d({
         "StripQuotes": func(typeReference("common", "String"), null, null, data(typeReference("common", "String"), false)),
-        "Parse": func(typeReference("ParseData"), null, interfaceReference("ParserHandler"), null)
+        "Parse": func(typeReference("ParseData"), null, builderReference("ParserHandler"), null)
     }),
 }

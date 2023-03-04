@@ -1,6 +1,6 @@
-import { CstripQuotes } from "../definition/api.generated"
+import { stripQuotes } from "../definition/api.generated"
 
-export const $$:CstripQuotes = ($) => {
+export const $$: stripQuotes = ($) => {
     const firstCharacter = $.substring(0, 1)
     if (firstCharacter !== "\"" && firstCharacter != "'") {
         throw new Error("unexpected wrapper")

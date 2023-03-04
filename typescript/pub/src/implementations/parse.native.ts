@@ -6,9 +6,9 @@ import * as gapi from "../definition/glossary"
 import * as ntypescript from "typescript"
 import * as npath from "path"
 
-import { Cparse } from "../definition/api.generated"
+import { parse } from "../definition/api.generated"
 
-export const $$: Cparse = ($, $i) => {
+export const $$: parse = ($, $i) => {
    const joinedPath = npath.join(...pi.flatten($.path))
 
    const fileContents = ntypescript.sys.readFile(joinedPath);

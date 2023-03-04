@@ -8,9 +8,9 @@ import * as gpub from "../../../../../pub"
 import * as gtest from "lib-pareto-test"
 import * as guast from "glo-typescript-untyped-ast"
 
-import { CgetTestSet } from "../definition/api.generated"
+import { getTestSet } from "../definition/api.generated"
 
-export const $$: CgetTestSet = ($) => {
+export const $$: getTestSet = ($) => {
     gpub.$r.parse(
         {
             'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.p.ts"]
