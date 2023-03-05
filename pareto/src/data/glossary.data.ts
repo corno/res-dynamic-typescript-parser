@@ -51,7 +51,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "location": member(computed(group({
                 "line": member(number()),
                 "column": member(number()),
-            })))
+            }))),
         })),
     }),
     'builders': d({
@@ -66,6 +66,6 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     }),
     'functions': d({
         "StripQuotes": func(typeReference("common", "String"), null, null, data(typeReference("common", "String"), false)),
-        "Parse": func(typeReference("ParseData"), null, builderReference("ParserHandler"), null)
+        "Parse": func(typeReference("ParseData"), null, builderReference("ParserHandler"), null),
     }),
 }
