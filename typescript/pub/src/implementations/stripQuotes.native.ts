@@ -1,4 +1,4 @@
-import { stripQuotes } from "../definition/api.generated"
+import { stripQuotes } from "../api.generated"
 
 export const $$: stripQuotes = ($) => {
     const firstCharacter = $.substring(0, 1)

@@ -1,12 +1,12 @@
 import * as pi from 'pareto-core-internals'
 
 import * as gua from "glo-typescript-untyped-ast"
-import * as gapi from "../definition/glossary"
+import * as gapi from "../glossary"
 
 import * as ntypescript from "typescript"
 import * as npath from "path"
 
-import { parse } from "../definition/api.generated"
+import { parse } from "../api.generated"
 
 export const $$: parse = ($, $i) => {
    const joinedPath = npath.join(...pi.flatten($.path))

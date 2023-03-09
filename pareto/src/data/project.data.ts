@@ -20,21 +20,19 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
         "glo-typescript-untyped-ast": null,
     }),
     'type': ['resource', {
-        'definition': {
-            'glossary': {
-                'root': glossary,
-                'imports': d({
-                    "common": external("glo-pareto-common"),
-                    "uast": external("glo-typescript-untyped-ast"),
-                }),
-            },
-            'api': {
-                'root': api,
+        'glossary': {
+            'root': glossary,
+            'imports': d({
+                "common": external("glo-pareto-common"),
+                "uast": external("glo-typescript-untyped-ast"),
+            }),
+        },
+        'api': {
+            'root': api,
 
-                'imports': d({
-                    "this": this_(),
-                }),
-            },
+            'imports': d({
+                "this": this_(),
+            }),
         },
         'nativeDependencies': d({
             "typescript": null,
