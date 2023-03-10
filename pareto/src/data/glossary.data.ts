@@ -7,17 +7,18 @@ import {
     dictionary, member, taggedUnion, types, group,
     array,
     typeReference,
-    data,
+    adata,
     boolean,
-    func,
+    afunc,
     type,
     optional,
     reference,
     number,
-    builderMethod,
+    interfaceMethod,
     parametrizedTypeReference,
     computed,
     builderReference,
+    interfaceReference,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -54,18 +55,20 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             }))),
         })),
     }),
-    'builders': d({
-        "ParserHandler": ['group', {
-            'members': d({
-                "onError": builderMethod(typeReference("TypescriptParseError")),
-                "onSuccess": builderMethod(parametrizedTypeReference("uast", { "Annotation": typeReference("TypescriptParserNode")}, "UntypedNode")),
-            }),
-        }],
-    }),
-    'interfaces': d({
-    }),
-    'functions': d({
-        "StripQuotes": func(typeReference("common", "String"), null, null, data(typeReference("common", "String"), false)),
-        "Parse": func(typeReference("ParseData"), null, builderReference("ParserHandler"), null),
-    }),
+    'type': ['asynchronous', {
+        'interfaces': d({
+            "ParserHandler": ['choice', {
+                'options': d({
+                    //FIXME this onError can be called multiple times
+                    "onError": interfaceMethod(typeReference("TypescriptParseError")),
+                    "onSuccess": interfaceMethod(parametrizedTypeReference("uast", { "Annotation": typeReference("TypescriptParserNode") }, "UntypedNode")),
+                }),
+            }],
+        }),
+        'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({
+            // "StripQuotes": func(typeReference("common", "String"), null, null, data(typeReference("common", "String"))),
+            "Parse": afunc(typeReference("ParseData"), interfaceReference("ParserHandler"), null),
+        }),
+
+    }],
 }

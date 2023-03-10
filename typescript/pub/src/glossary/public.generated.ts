@@ -5,9 +5,7 @@ import { T } from './types.generated'
 import * as g_common from "glo-pareto-common"
 import * as g_uast from "glo-typescript-untyped-ast"
 
-export namespace I {}
-
-export namespace B {
+export namespace I {
     
     export type ParserHandler = {
         'onError': ($: T.TypescriptParseError, ) => void
@@ -17,7 +15,5 @@ export namespace B {
 
 export namespace F {
     
-    export type Parse = ($: T.ParseData, $b: B.ParserHandler,) => void
-    
-    export type StripQuotes = ($: g_common.T.String,) => g_common.T.String
+    export type Parse = ($: T.ParseData, $i: I.ParserHandler,) => void
 }
