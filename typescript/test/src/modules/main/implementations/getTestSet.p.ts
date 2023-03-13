@@ -4,17 +4,15 @@ import * as pl from 'pareto-core-lib'
 import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
 
-import * as gpub from "../../../../../pub"
-import * as gtest from "lib-pareto-test"
-import * as guast from "glo-typescript-untyped-ast"
+import * as g_pub from "../../../../../pub"
+import * as g_test from "lib-pareto-test"
+import * as g_uast from "glo-typescript-untyped-ast"
 
 import { getTestSet } from "../api.generated"
 
 export const $$: getTestSet = ($) => {
-    gpub.$r.parse(
-        {
-            'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.p.ts"]
-        },
+    g_pub.$r.createParser(
+        null,
         {
             'onError': ($) => {
                 switch ($[0]) {
@@ -29,7 +27,7 @@ export const $$: getTestSet = ($) => {
             'onSuccess': ($) => {
                 // pv.logDebugMessage($.path)
                 // pv.logDebugMessage($.data.fullPath)
-                function doNode($: guast.T.UntypedNode<gpub.T.TypescriptParserNode>) {
+                function doNode($: g_uast.T.UntypedNode<g_pub.T.TypescriptParserNode>) {
                     $.children.__forEach(($) => {
                         // pv.logDebugMessage($.kind)
 
@@ -52,7 +50,7 @@ export const $$: getTestSet = ($) => {
                         //         pl.panic(`expected a string`)
                         //     } else {
                         //         pv.logDebugMessage(`WOOOHHOO$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   ${operator[1]}`)
-           
+
                         //     }
                         // }
                         // if ($.kind === "StringLiteral") {
@@ -61,7 +59,7 @@ export const $$: getTestSet = ($) => {
                         //         pl.panic(`expected a string`)
                         //     } else {
                         //         pv.logDebugMessage(`WOOOHHOO$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   ${operator[1]}`)
-           
+
                         //     }
                         // }
 
@@ -72,8 +70,12 @@ export const $$: getTestSet = ($) => {
                 doNode($)
             }
         }
+    )(
+        {
+            'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.p.ts"]
+        },
     )
-    const builder = ps.createUnsafeDictionaryBuilder<gtest.T.TestElement>()
+    const builder = ps.createUnsafeDictionaryBuilder<g_test.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             'type': ['test', {

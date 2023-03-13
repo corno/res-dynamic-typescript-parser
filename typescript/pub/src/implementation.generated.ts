@@ -1,6 +1,6 @@
 import { API } from "./api.generated"
-import { $$ as iparse } from "./implementations/parse.native"
+import { $$ as icreateParser } from "./implementations/createParser.native"
 
 export const $r: API = {
-    'parse': iparse,
+    'createParser': icreateParser,
 }

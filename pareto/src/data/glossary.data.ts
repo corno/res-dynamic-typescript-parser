@@ -12,20 +12,26 @@ import {
     afunc,
     type,
     optional,
-    reference,
     number,
     interfaceMethod,
-    parametrizedTypeReference,
     computed,
     builderReference,
     interfaceReference,
+    inf,
+    externalTypeReference,
+    imp,
+    ref,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 const d = pd.d
 
-export const $: gglossary.T.Glossary<pd.SourceLocation> = {
+export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
+    'imports': d({
+        "common": imp({}),
+        "uast": imp({ "Annotation": typeReference("TypescriptParserNode") }),
+    }),
     'types': d({
 
         // import * as pt from 'pareto-core-types';
@@ -40,7 +46,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         // };
 
         "ParseData": type(group({
-            "path": member(reference("common", "Path")),
+            "path": member(ref(externalTypeReference("common", "Path"))),
         })),
         "TypescriptParseError": type(taggedUnion({
             "could not read file": group({}),
@@ -61,13 +67,14 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
                 'options': d({
                     //FIXME this onError can be called multiple times
                     "onError": interfaceMethod(typeReference("TypescriptParseError")),
-                    "onSuccess": interfaceMethod(parametrizedTypeReference("uast", { "Annotation": typeReference("TypescriptParserNode") }, "UntypedNode")),
+                    "onSuccess": interfaceMethod(externalTypeReference("uast", "UntypedNode")),
                 }),
             }],
+            "Parse": interfaceMethod(typeReference("ParseData"))
         }),
-        'functions': d<gglossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({
+        'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({
             // "StripQuotes": func(typeReference("common", "String"), null, null, data(typeReference("common", "String"))),
-            "Parse": afunc(typeReference("ParseData"), interfaceReference("ParserHandler"), null),
+            "CreateParser": afunc(externalTypeReference("common", "Null"), interfaceReference("ParserHandler"), inf(interfaceReference("Parse"))),
         }),
 
     }],
