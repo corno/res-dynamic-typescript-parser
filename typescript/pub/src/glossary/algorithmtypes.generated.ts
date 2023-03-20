@@ -24,8 +24,8 @@ export namespace ASYNC {
         
         export namespace C {
             export type CreateParser = ($is: {
-                'errorHandler': ASYNC.I.ErrorHandler
-                'handler': ASYNC.I.ParserHandler
+                readonly 'errorHandler': ASYNC.I.ErrorHandler
+                readonly 'handler': ASYNC.I.ParserHandler
             }) => ASYNC.I.Parse
         }
     }

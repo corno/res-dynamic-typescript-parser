@@ -8,5 +8,5 @@ export namespace A {
 }
 
 export type API = {
-    createParser: A.createParser
+    readonly 'createParser': A.createParser
 }
