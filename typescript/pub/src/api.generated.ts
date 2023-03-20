@@ -2,8 +2,11 @@ import * as pt from 'pareto-core-types'
 
 import * as g_this from "./glossary"
 
-export type createParser = g_this.F.CreateParser
+export namespace A {
+    
+    export type createParser = g_this.ASYNC.A.C.CreateParser
+}
 
 export type API = {
-    createParser: createParser
+    createParser: A.createParser
 }

@@ -12,19 +12,21 @@ import { getTestSet } from "../api.generated"
 
 export const $$: getTestSet = ($) => {
     g_pub.$r.createParser(
-        null,
         {
-            'onError': ($) => {
-                switch ($[0]) {
-                    case 'could not read file':
-                        pl.cc($[1], ($) => {
-                            pv.logDebugMessage(`could not read file`)
-                        })
-                        break
-                    default: pl.au($[0])
-                }
+            'errorHandler': {
+                'data': ($) => {
+                    switch ($[0]) {
+                        case 'could not read file':
+                            pl.cc($[1], ($) => {
+                                pv.logDebugMessage(`could not read file`)
+                            })
+                            break
+                        default: pl.au($[0])
+                    }
+                },
+                'end': () => {}
             },
-            'onSuccess': ($) => {
+            'handler': ($) => {
                 // pv.logDebugMessage($.path)
                 // pv.logDebugMessage($.data.fullPath)
                 function doNode($: g_uast.T.UntypedNode<g_pub.T.TypescriptParserNode>) {
@@ -72,7 +74,7 @@ export const $$: getTestSet = ($) => {
         }
     )(
         {
-            'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.p.ts"]
+            'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.a.f.ts"]
         },
     )
     const builder = ps.createUnsafeDictionaryBuilder<g_test.T.TestElement>()

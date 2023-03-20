@@ -1,26 +1,8 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    string,
-    null_,
-    nested,
-    dictionary, member, taggedUnion, types, group,
-    array,
-    typeReference,
-    adata,
-    boolean,
-    afunc,
-    type,
-    optional,
-    number,
-    interfaceMethod,
-    computed,
-    builderReference,
-    interfaceReference,
-    inf,
-    externalTypeReference,
-    imp,
-    ref,
+    aconstructor,
+    afunction, aInterfaceMethod, aInterfaceReference, computed, data, externalTypeReference, group, imp, inf, member, number, ref, sfunction, sInterfaceMethod, stream, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -34,8 +16,6 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'types': d({
 
-        // import * as pt from 'pareto-core-types';
-        // import * as uast from "api-untyped-ast";
         // export declare type TFile = {
         //     readonly "fullPath": string;
         //     readonly "root": uast.TUntypedNode;
@@ -61,21 +41,27 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             }))),
         })),
     }),
-    'type': ['asynchronous', {
+    'asynchronous': {
         'interfaces': d({
-            "ParserHandler": ['choice', {
-                'options': d({
-                    //FIXME this onError can be called multiple times
-                    "onError": interfaceMethod(typeReference("TypescriptParseError")),
-                    "onSuccess": interfaceMethod(externalTypeReference("uast", "UntypedNode")),
-                }),
-            }],
-            "Parse": interfaceMethod(typeReference("ParseData"))
+            "Parse": aInterfaceMethod(typeReference("ParseData")),
+            "ParserHandler": aInterfaceMethod(externalTypeReference("uast", "UntypedNode")), //FIXME optionally called
+            "ErrorHandler": stream(
+                aInterfaceMethod(typeReference("TypescriptParseError")),
+                aInterfaceMethod(null),
+            )
         }),
-        'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({
-            // "StripQuotes": func(typeReference("common", "String"), null, null, data(typeReference("common", "String"))),
-            "CreateParser": afunc(externalTypeReference("common", "Null"), interfaceReference("ParserHandler"), inf(interfaceReference("Parse"))),
+        'algorithms': d({
+            "CreateParser": aconstructor(aInterfaceReference("Parse"), {
+                "handler": aInterfaceReference("ParserHandler"),
+                "errorHandler": aInterfaceReference("ErrorHandler"),
+            }),
         }),
-
-    }],
+    },
+    'synchronous': {
+        'interfaces': d({
+        }),
+        'algorithms': d({
+            "StripQuotes": sfunction(externalTypeReference("common", "String"), data(externalTypeReference("common", "String"))),
+        }),
+    },
 }

@@ -1,6 +1,5 @@
 import * as pd from 'pareto-core-data'
 
-import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
@@ -21,40 +20,59 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
         "glo-typescript-untyped-ast": null,
     }),
     'type': ['resource', {
-        'glossary': {
-            'root': glossary,
-            'imports': d({
-                "common": external("glo-pareto-common"),
-                "uast": external("glo-typescript-untyped-ast"),
-            }),
-        },
-        'api': {
-            'root': api,
+        'definition': {
+            'glossary': {
+                'root': glossary,
+                'imports': d({
+                    "common": external("glo-pareto-common"),
+                    "uast": external("glo-typescript-untyped-ast"),
+                }),
+            },
+            'api': {
+                'root': api,
 
-            'imports': d({
-                "this": this_(),
+                'imports': d({
+                    "this": this_(),
+                }),
+            },
+        },
+        'temp': {
+            'nativeDependencies': d({
+                "typescript": null,
+            }),
+            'devDependencies': d({
+                "@types/node": null,
             }),
         },
-        'nativeDependencies': d({
-            "typescript": null,
-        }),
-        'devDependencies': d({
-            "@types/node": null,
-        }),
         'test': {
             'dependencies': d({
                 "glo-typescript-untyped-ast": null,
             }),
-            'glossary': {
-                'parameters': d({}),
-                'imports': d({}),
-                'types': d({}),
-                'type': ['synchronous', {
-                    'builders': d({}),
-                    'functions': d<g_glossary.T.Glossary._ltype.synchronous.functions.D<pd.SourceLocation>>({}),
-                }],
+            'definition': {
+                'glossary': {
+                    'root': {
+                        'parameters': d({}),
+                        'imports': d({}),
+                        'types': d({}),
+                        'asynchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                        'synchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                    },
+                    'imports': d({}),
+                },
+                'api': {
+                    'root': {
+                        'algorithms': d({}),
+                    },
+                    'imports': d({}),
+                },
             },
             'imports': d({}),
-        }
+        },
     }],
 }

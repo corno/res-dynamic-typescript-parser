@@ -6,9 +6,9 @@ import * as g_this from "../glossary"
 import * as ntypescript from "typescript"
 import * as npath from "path"
 
-import { createParser } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: createParser = ($, $i) => {
+export const $$: A.createParser = ($is) => {
    return ($) => {
 
       const joinedPath = npath.join(...pi.flatten($.path))
@@ -16,7 +16,7 @@ export const $$: createParser = ($, $i) => {
       const fileContents = ntypescript.sys.readFile(joinedPath);
    
       if (fileContents === undefined) {
-         $i.onError(['could not read file', null])
+         $is.errorHandler.data(['could not read file', null])
       } else {
    
          // Parse the TypeScript file and get its AST
@@ -66,7 +66,7 @@ export const $$: createParser = ($, $i) => {
                },
             }
          }
-         $i.onSuccess(wrap(sourceFile))
+         $is.handler(wrap(sourceFile))
    
    
          // project.resolveSourceFileDependencies()
@@ -91,6 +91,6 @@ export const $$: createParser = ($, $i) => {
          // })
          // $i.onEnd()
       }
-   
+      $is.errorHandler.end()
    }
 }
