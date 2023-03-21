@@ -8,9 +8,9 @@ import * as g_pub from "../../../../../pub"
 import * as g_test from "lib-pareto-test"
 import * as g_uast from "glo-typescript-untyped-ast"
 
-import { getTestSet } from "../api.generated"
+import { A } from "../api.generated"
 
-export const $$: getTestSet = ($) => {
+export const $$: A.getTestSet = ($) => {
     g_pub.$r.createParser()(
         {
             'errorHandler': {
