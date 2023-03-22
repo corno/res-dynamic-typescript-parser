@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    aconstructor,
+    constructor,
     afunction, aInterfaceMethod, aInterfaceReference, computed, data, externalTypeReference, group, imp, inf, member, number, ref, sfunction, sInterfaceMethod, streamconsumer, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
@@ -51,7 +51,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             )
         }),
         'algorithms': d({
-            "CreateParser": aconstructor(aInterfaceReference("Parse"), {
+            "CreateParser": constructor(aInterfaceReference("Parse"), {
                 "handler": aInterfaceReference("ParserHandler"),
                 "errorHandler": aInterfaceReference("ErrorHandler"),
             }),
