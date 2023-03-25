@@ -1,8 +1,8 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    constructor,
-    afunction, aInterfaceMethod, aInterfaceReference, computed, data, externalTypeReference, group, imp, inf, member, number, ref, sfunction, sInterfaceMethod, streamconsumer, taggedUnion, type, typeReference
+    aInterface, aInterfaceMethod, aInterfaceReference, computed, constructor, data,
+    externalTypeReference, group, imp, member, number, ref, sfunction, streamconsumer, taggedUnion, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -43,12 +43,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "Parse": aInterfaceMethod(typeReference("ParseData")),
-            "ParserHandler": aInterfaceMethod(externalTypeReference("uast", "UntypedNode")), //FIXME optionally called
-            "ErrorHandler": streamconsumer(
+            "Parse": aInterface(aInterfaceMethod(typeReference("ParseData"))),
+            "ParserHandler": aInterface(aInterfaceMethod(externalTypeReference("uast", "UntypedNode"))), //FIXME optionally called
+            "ErrorHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("TypescriptParseError")),
                 aInterfaceMethod(null),
-            )
+            ))
         }),
         'algorithms': d({
             "CreateParser": constructor(aInterfaceReference("Parse"), {
