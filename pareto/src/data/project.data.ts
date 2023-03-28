@@ -53,7 +53,10 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
                     'root': {
                         'parameters': d({}),
                         'imports': d({}),
-                        'types': d({}),
+                        'root': {
+                            'namespaces': d({}),
+                            'types': d({}),
+                        },
                         'asynchronous': {
                             'interfaces': d({}),
                             'algorithms': d({}),

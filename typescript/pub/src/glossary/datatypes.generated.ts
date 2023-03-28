@@ -3,6 +3,8 @@ import * as pt from 'pareto-core-types'
 import * as g_common from "glo-pareto-common"
 import * as g_uast from "glo-typescript-untyped-ast"
 
+export namespace N {}
+
 export namespace T {
     
     export namespace ParseData {

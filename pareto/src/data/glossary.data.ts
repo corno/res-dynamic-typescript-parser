@@ -14,33 +14,36 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "common": imp({}),
         "uast": imp({ "Annotation": typeReference("TypescriptParserNode") }),
     }),
-    'types': d({
+    'root': {
+        'namespaces': d({}),
+        'types': d({
 
-        // export declare type TFile = {
-        //     readonly "fullPath": string;
-        //     readonly "root": uast.TUntypedNode;
-        // };
-        // export declare type TLocation = {
-        //     readonly "line": number;
-        //     readonly "column": number;
-        // };
+            // export declare type TFile = {
+            //     readonly "fullPath": string;
+            //     readonly "root": uast.TUntypedNode;
+            // };
+            // export declare type TLocation = {
+            //     readonly "line": number;
+            //     readonly "column": number;
+            // };
 
-        "ParseData": type(group({
-            "path": member(ref(externalTypeReference("common", "Path"))),
-        })),
-        "TypescriptParseError": type(taggedUnion({
-            "could not read file": group({}),
-        })),
-        "TypescriptParserNode": type(group({
-            "internal": member(group({
-                //cast this one to a Typescript.Node if needed
+            "ParseData": type(group({
+                "path": member(ref(externalTypeReference("common", "Path"))),
             })),
-            "location": member(computed(group({
-                "line": member(number()),
-                "column": member(number()),
-            }))),
-        })),
-    }),
+            "TypescriptParseError": type(taggedUnion({
+                "could not read file": group({}),
+            })),
+            "TypescriptParserNode": type(group({
+                "internal": member(group({
+                    //cast this one to a Typescript.Node if needed
+                })),
+                "location": member(computed(group({
+                    "line": member(number()),
+                    "column": member(number()),
+                }))),
+            })),
+        }),
+    },
     'asynchronous': {
         'interfaces': d({
             "Parse": aInterface(aInterfaceMethod(typeReference("ParseData"))),
