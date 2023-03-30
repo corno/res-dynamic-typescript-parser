@@ -23,10 +23,12 @@ export namespace ASYNC {
         
         
         export namespace C {
-            export type CreateParser = ($is: {
-                readonly 'errorHandler': ASYNC.I.ErrorHandler
-                readonly 'handler': ASYNC.I.ParserHandler
-            }) => ASYNC.I.Parse
+            export type CreateParser = {
+                'construct': ($is: {
+                    readonly 'errorHandler': ASYNC.I.ErrorHandler
+                    readonly 'handler': ASYNC.I.ParserHandler
+                }) => ASYNC.I.Parse
+            }
         }
     }
 }

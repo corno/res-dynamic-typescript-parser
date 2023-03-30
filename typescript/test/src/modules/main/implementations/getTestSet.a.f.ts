@@ -11,7 +11,7 @@ import * as g_uast from "glo-typescript-untyped-ast"
 import { A } from "../api.generated"
 
 export const $$: A.getTestSet = ($) => {
-    g_pub.$r.createParser()(
+    g_pub.$r.createParser().construct(
         {
             'errorHandler': {
                 'data': ($) => {
