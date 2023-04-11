@@ -17,7 +17,7 @@ export const $$: A.getTestSet = ($) => {
                 'data': ($) => {
                     switch ($[0]) {
                         case 'could not read file':
-                            pl.cc($[1], ($) => {
+                            pl.ss($, ($) => {
                                 pv.logDebugMessage(`could not read file`)
                             })
                             break

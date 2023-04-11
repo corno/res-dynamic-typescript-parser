@@ -1,3 +1,3 @@
 export * from "./api.generated"
 export * from "./glossary"
-export { $r } from "./implementation.generated"
+export { $api as $r } from "./implementation.generated"
