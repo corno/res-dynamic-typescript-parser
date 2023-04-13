@@ -13,7 +13,7 @@ export const $$: A.createParser = () => {
       'construct': ($is) => {
          return ($) => {
    
-            const joinedPath = npath.join(...pi.flatten($.path))
+            const joinedPath = npath.join(...pi.xflatten($.path))
    
             const fileContents = ntypescript.sys.readFile(joinedPath);
    
