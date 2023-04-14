@@ -17,7 +17,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
 
     'dependencies': d({
         "glo-pareto-common": null,
-        "glo-typescript-untyped-ast": null,
+        "lib-xml4pareto": null,
     }),
     'type': ['resource', {
         'definition': {
@@ -25,7 +25,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
                 'root': glossary,
                 'imports': d({
                     "common": external("glo-pareto-common"),
-                    "uast": external("glo-typescript-untyped-ast"),
+                    "xml": external("lib-xml4pareto/dist/submodules/read"),
                 }),
             },
             'api': {
@@ -46,7 +46,7 @@ export const $: g_project.T.Project<pd.SourceLocation> = {
         },
         'test': {
             'dependencies': d({
-                "glo-typescript-untyped-ast": null,
+                "lib-xml4pareto": null,
             }),
             'definition': {
                 'glossary': {

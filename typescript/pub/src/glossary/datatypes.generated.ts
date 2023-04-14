@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 
 import * as g_common from "glo-pareto-common"
-import * as g_uast from "glo-typescript-untyped-ast"
+import * as g_xml from "lib-xml4pareto/dist/submodules/read"
 
 export namespace N {}
 

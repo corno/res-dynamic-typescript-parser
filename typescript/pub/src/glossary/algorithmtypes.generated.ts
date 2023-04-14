@@ -3,7 +3,7 @@ import * as pt from 'pareto-core-types'
 import { T } from "./datatypes.generated"
 
 import * as g_common from "glo-pareto-common"
-import * as g_uast from "glo-typescript-untyped-ast"
+import * as g_xml from "lib-xml4pareto/dist/submodules/read"
 
 export namespace ASYNC {
     
@@ -16,7 +16,7 @@ export namespace ASYNC {
         
         export type Parse = ($: T.ParseData, ) => void
         
-        export type ParserHandler = ($: g_uast.T.UntypedNode<T.TypescriptParserNode>, ) => void
+        export type ParserHandler = ($: g_xml.T.Document<T.TypescriptParserNode>, ) => void
     }
     
     export namespace A {

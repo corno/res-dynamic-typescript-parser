@@ -12,7 +12,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'parameters': d({}),
     'imports': d({
         "common": imp({}),
-        "uast": imp({ "Annotation": typeReference("TypescriptParserNode") }),
+        "xml": imp({ "Annotation": typeReference("TypescriptParserNode") }),
     }),
     'root': {
         'namespaces': d({}),
@@ -47,7 +47,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'asynchronous': {
         'interfaces': d({
             "Parse": aInterface(aInterfaceMethod(typeReference("ParseData"))),
-            "ParserHandler": aInterface(aInterfaceMethod(externalTypeReference("uast", "UntypedNode"))), //FIXME optionally called
+            "ParserHandler": aInterface(aInterfaceMethod(externalTypeReference("xml", "Document"))), //FIXME optionally called
             "ErrorHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("TypescriptParseError")),
                 aInterfaceMethod(null),

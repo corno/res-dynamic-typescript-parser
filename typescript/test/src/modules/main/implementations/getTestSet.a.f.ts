@@ -3,14 +3,16 @@ import * as ps from 'pareto-core-state'
 import * as pl from 'pareto-core-lib'
 import * as pv from 'pareto-core-dev'
 import * as pa from 'pareto-core-async'
+import * as pd from 'pareto-core-data'
 
 import * as g_pub from "../../../../../pub"
 import * as g_test from "lib-pareto-test"
-import * as g_uast from "glo-typescript-untyped-ast"
+import * as g_xml from "lib-xml4pareto/dist/submodules/read"
 
 import { A } from "../api.generated"
 
 export const $$: A.getTestSet = ($) => {
+    const x = !5
     g_pub.$r.createParser().construct(
         {
             'errorHandler': {
@@ -24,14 +26,13 @@ export const $$: A.getTestSet = ($) => {
                         default: pl.au($[0])
                     }
                 },
-                'end': () => {}
+                'end': () => { }
             },
             'handler': ($) => {
                 // pv.logDebugMessage($.path)
                 // pv.logDebugMessage($.data.fullPath)
-                function doNode($: g_uast.T.UntypedNode<g_pub.T.TypescriptParserNode>) {
-                    $.children.__forEach(($) => {
-                        // pv.logDebugMessage($.kind)
+                function doNode($: g_xml.T.Element<g_pub.T.TypescriptParserNode>) {
+                    $.content.__forEach(($) => {
 
                         // const x = !true
                         // if ($.kind === "PrefixUnaryExpression") {
@@ -64,17 +65,32 @@ export const $$: A.getTestSet = ($) => {
 
                         //     }
                         // }
+                        switch ($[0]) {
+                            case 'element':
+                                pl.ss($, ($) => {
+                                    //pv.logDebugMessage($.name)
+                                    $.attributes.__forEach(() => false, ($, key) => {
+                                        //pv.logDebugMessage(`ATTRIBUTE: ${key}:${$}`)
+                                    })
+                                    doNode($)
+                                })
+                                break
+                            case 'text':
+                                pl.ss($, ($) => {
 
-                        doNode($)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
 
                     })
                 }
-                doNode($)
+                doNode($.root)
             }
         }
     )(
         {
-            'path': [$.testDirectory, "../src/modules/main/implementations/getTestSet.a.f.ts"]
+            'path': pd.a([$.testDirectory, "../src/modules/main/implementations/getTestSet.a.f.ts"])
         },
     )
     const builder = ps.createUnsafeDictionaryBuilder<g_test.T.TestElement>()
