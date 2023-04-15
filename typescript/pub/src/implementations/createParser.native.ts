@@ -51,19 +51,21 @@ export const $$: A.createParser = () => {
                   }
                   if (x.operator !== undefined) {
                      let value = ""
-                     const lookup: { [key: number]: string } = {
-                        39: "plus",
-                        40: "minus",
-                        54: "tilde",
-                        53: "exclamation",
-                        45: "plusplus",
-                        46: "minusminus",
+
+                     //const x =n_typescript.SyntaxKind.AbstractKeyword
+                     function getOperator($: n_typescript.SyntaxKind) {
+                        switch (x.operator) {
+                           case n_typescript.SyntaxKind.PlusToken: return "plus"
+                           case n_typescript.SyntaxKind.MinusToken: return "minus"
+                           case n_typescript.SyntaxKind.TildeToken: return "tilde"
+                           case n_typescript.SyntaxKind.ExclamationToken: return "exclamation"
+                           case n_typescript.SyntaxKind.PlusPlusToken: return "plusplus"
+                           case n_typescript.SyntaxKind.MinusMinusToken: return "minusminus"
+                           case n_typescript.SyntaxKind.TypeOfKeyword: return "typeof"
+                           default: pi.panic(`unexpected 'operator' property: ${$.toString()}`)
+                        }
                      }
-                     const found = lookup[x.operator]
-                     if (found === undefined) {
-                        pi.panic("expected the 'operator' property to be of type 'number'")
-                     }
-                     attributes["operator"] = found
+                     attributes["operator"] = getOperator(x.operator)
                   }
                   return {
                      'name': n_typescript.SyntaxKind[$.kind],
