@@ -9,10 +9,10 @@ import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/gloss
 const d = pd.d
 
 export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
-    'parameters': d({}),
+    'glossary parameters': d({}),
     'imports': d({
-        "common": imp({}),
-        "xml": imp({ "Annotation": typeReference("TypescriptParserNode") }),
+        "common": imp(),
+        "xml": imp(),
     }),
     'root': {
         'namespaces': d({}),
@@ -47,7 +47,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'asynchronous': {
         'interfaces': d({
             "Parse": aInterface(aInterfaceMethod(typeReference("ParseData"))),
-            "ParserHandler": aInterface(aInterfaceMethod(externalTypeReference("xml", "Document"))), //FIXME optionally called
+            "ParserHandler": aInterface(aInterfaceMethod(externalTypeReference("xml", "Document", { "Annotation": typeReference("TypescriptParserNode") }))), //FIXME optionally called
             "ErrorHandler": aInterface(streamconsumer(
                 aInterfaceMethod(typeReference("TypescriptParseError")),
                 aInterfaceMethod(null),
